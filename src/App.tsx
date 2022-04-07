@@ -54,8 +54,8 @@ export default function App() {
         } else {
           newMnemonic = getNewMnemonic();
         }
-        setMnemonic(newMnemonic);
-        const newMasterPrivateKey = await getMasterPrivateKey(mnemonic);
+        setMnemonic(mnemonic);
+        const newMasterPrivateKey = await getMasterPrivateKey(newMnemonic);
         setMasterFingerprint(newMasterPrivateKey.fingerprint);
         const derivationPath = "m/84'/0'/0'"; // P2WPKH
         const newXpub = getXpubFromPrivateKey(
