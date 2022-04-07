@@ -68,7 +68,7 @@ export default function App() {
       }
     };
     getSeed();
-  }, [mnemonic]);
+  }, []);
 
   // Addresses
   useEffect(() => {

@@ -13,7 +13,7 @@ export const getMasterPrivateKey = async (
   mnemonic: string
 ): Promise<BIP32Interface> => {
   const seed = await mnemonicToSeed(mnemonic);
-  const privateKey = fromSeed(seed, networks.bitcoin);
+  const privateKey = fromSeed(seed, networks.testnet);
   return privateKey;
 };
 
@@ -30,7 +30,7 @@ export const deriveChildPublicKey = (
   xpub: string,
   derivationPath: string
 ): BIP32Interface => {
-  const node = bip32.fromBase58(xpub, networks.bitcoin);
+  const node = bip32.fromBase58(xpub, networks.testnet);
   const child = node.derivePath(derivationPath);
   return child;
 };
@@ -40,7 +40,7 @@ export const getAddressFromChildPubkey = (
 ): payments.Payment => {
   const address = payments.p2wpkh({
     pubkey: child.publicKey,
-    network: networks.bitcoin,
+    network: networks.testnet,
   });
   return address;
 };
